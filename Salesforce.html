@@ -1,0 +1,795 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="Home.css">
+    <title>SFDC - Salesforce</title>
+
+    <script>
+
+
+
+window.onload = function() {
+           // Parse the query parameter from the URL
+           const params = new URLSearchParams(window.location.search);
+           const requestType = params.get('request');
+           // Display the appropriate section based on the request type
+           if (requestType === "Creation") {
+               document.getElementById("creationSection").style.display = "block";
+               document.getElementById("modificationSection").style.display = "none";
+               document.getElementById("deletionSection").style.display = "none";
+
+           } else if (requestType === "Modification") {
+               document.getElementById("creationSection").style.display = "none";
+               document.getElementById("modificationSection").style.display = "block";
+               document.getElementById("deletionSection").style.display = "none";
+           }
+         else if (requestType === "Deletion") {
+               document.getElementById("creationSection").style.display = "none";
+               document.getElementById("modificationSection").style.display = "none";
+               document.getElementById("deletionSection").style.display = "block";
+
+           }
+       };
+
+        document.getElementById("requestType").addEventListener("change", showAdditionalFields);
+        function showAdditionalFields() {
+            var selectBox = document.getElementById("requestType");
+            var selectedValue = selectBox.options[selectBox.selectedIndex].value;
+            // Hide both fields initially
+            document.getElementById("additionalData").style.display = "none";
+            document.getElementById("additionalDataDeletion").style.display = "none";
+            document.getElementById("additionalDataField").style.display = "none";
+            document.getElementById("additionalDataReset").style.display = "none";
+            document.getElementById("additionalDataEnable_Salesforce").style.display = "none";
+
+            if (selectedValue === "creation") {
+                document.getElementById("additionalData").style.display = "block";
+            } else if (selectedValue === "modification") {
+                document.getElementById("additionalDataField").style.display = "block";
+            }
+            else if (selectedValue === "deletion") {
+                document.getElementById("additionalDataDeletion").style.display = "block";
+            }
+            else if (selectedValue === "passwordReset") {
+                document.getElementById("additionalDataReset").style.display = "block";
+            }
+            else if (selectedValue === "enable") {
+                document.getElementById("additionalDataEnable_Salesforce").style.display = "block";
+            }
+        }
+
+        // Function to redirect to Admin page when "Admin" is selected
+        function redirectToAdmin() {
+            var selectBox = document.getElementById("secondRequestType");
+            var selectedValue = selectBox.options[selectBox.selectedIndex].value;
+            
+             if (selectedValue === "OPS - Salesforce") {
+                window.open("Salesforce.html", "_blank");
+                selectBox.selectedIndex = 0;
+            }
+            else if (selectedValue === "FCURCU - Salesforce") {
+                window.open("Salesforce.html", "_blank");
+                selectBox.selectedIndex = 0;
+            }
+            else if (selectedValue === "Sales - Salesforce") {
+                window.open("Salesforce.html", "_blank");
+                selectBox.selectedIndex = 0;
+            }
+            else if (selectedValue === "Curing - Salesforce") {
+                window.open("Salesforce.html", "_blank");
+                selectBox.selectedIndex = 0;
+            }
+            else if (selectedValue === "Others - Salesforce") {
+                window.open("Salesforce.html", "_blank");
+                selectBox.selectedIndex = 0;
+            }
+            else if (selectedValue === "BFL - Salesforce Platform") {
+                window.open("SalesforcePlatform.html", "_blank");
+                selectBox.selectedIndex = 0;
+            }
+            else if (selectedValue === "Credit - Salesforce Platform") {
+                window.open("SalesforcePlatform.html", "_blank");
+                selectBox.selectedIndex = 0;
+            }
+            else {
+            }
+        }
+
+    </script>
+</head>
+
+<body>
+    <div class="bx-1">
+        <div class="head">
+            <p>Default Data</p>
+        </div>
+
+        <div class="form-bx">
+            <!-- First Field: Types of User Request -->
+            <div class="field">
+                <div class="form-head">
+                    <p>Types of User Request: <span>*</span></p>
+                </div>
+                <div class="form-input">
+                    <select id="requestType" onchange="showAdditionalFields();"> 
+                        <option value="creation" selected>Creation</option>
+                        <option value="modification">Modification</option>
+                        <option value="deletion">Deletion</option>
+                        <option value="passwordReset">Password Reset</option>
+                        <option value="enable">Enable</option>
+                    </select>
+                </div>
+            </div>
+
+
+            <div class="field">
+                <div class="form-head">
+                    <p>Request For: <span>*</span></p>
+                </div>
+                <div class="form-input">
+                    <div class="rd-bx">
+                        <div class="rd-1">
+                            <input type="radio" id="myself" name="requestFor" checked>
+                            <label for="myself">Myself</label>
+                        </div>
+                        <div class="rd-2">
+                            <input type="radio" id="onBehalf" name="requestFor">
+                            <label for="onBehalf">On behalf of</label>
+                        </div>
+                    </div>
+                    <div class="emp-bx">
+                        <input type="text" placeholder="Enter Employee Details..." disabled>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="field">
+                <div class="form-head">
+                    <p>Application: <span>*</span></p>
+                </div>
+                <div class="form-input">
+                    <select>
+                        <option value="Select">Select</option>
+                        <option value="sfdc">SFDC</option>
+                        <option value="Aadhar Vault">Aadhar Vault</option>
+                        <option value="CRM Next">CRM Next</option>
+                    </select>
+                </div>
+            </div>
+
+
+            <div class="field">
+                <div class="form-head">
+                    <p>Module Name: <span>*</span></p>
+                </div>
+                <div class="form-input">
+                    <select id="secondRequestType" onchange="redirectToAdmin()">
+                        <!-- <option value="Select">Select</option> -->
+                        <option value="OPS - Salesforce">OPS - Salesforce</option>
+                        <option value="FCURCU - Salesforce">FCURCU - Salesforce</option>
+                        <option value="Sales - Salesforce">Sales - Salesforce</option>
+                        <option value="Curing - Salesforce">Curing - Salesforce</option>
+                        <option value="Others - Salesforce">Others - Salesforce</option>    
+                    </select>
+                </div>
+            </div>
+
+
+            <div class="field">
+                <div class="form-head">
+                    <p>Business Justification: <span>*</span></p>
+                </div>
+                <div class="form-input">
+                    <input type="text" placeholder="Enter Business Justification Here...">
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <div class="bx-2" id="additionalData">
+        <div class="head">
+            <p>Additional Data Required For SFDC</p>
+        </div>
+
+        <div class="form-grp-bx">
+            <div class="form-bx-1">
+
+                <div class="form-field">
+                    <div class="form-head">
+                        <p>Role: <span>*</span></p>
+                    </div>
+                    <div class="form-input">
+                        <select id="secondRequestType" onchange="redirectToAdmin()">
+                            <option value=" Select">Select</option>
+                            <option value="Admin">NSM</option>
+                            <option value="userChecker">RSM</option>
+                            <option value="userMaker">Area Head</option>
+                            <option value="userMaker">ASM</option>
+                            <option value="userMaker">Curing</option>
+                            <option value="userMaker">Product Manager</option>
+                            <option value="userMaker">Admin User</option>
+                            <option value="userMaker">APSI handling team</option>
+                            <option value="userMaker">UAM team</option>
+                            <option value="userMaker">Audit User(Internal)</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-bx-5">
+                    <div class="form-field">
+                        <div class="form-head">
+                            <p>Profile: <span>*</span></p>
+                        </div>
+                        <div class="form-input">
+                            <select>
+                                <option value="Select">Select</option>
+                                <option value="">BFL Ops User</option>
+                                <option value="">BFL Underwriter Supervisor</option>
+                                <option value="">Operations External</option>
+                                <option value="">Validator External</option>
+                                <option value="">RISK</option>
+                                <option value="">FCU Profile</option>
+                                <option value="">Credit Underwriter Supervisor</option>
+                                <option value="">Credit Underwriter Agent</option>
+                                <option value="">DST</option>
+                                <option value="">Branch</option>
+                                <option value="">Curing</option>
+                                <option value="">Curing Maker</option>
+                                <option value="">Curing Checker</option>
+                                <option value="">Curing Supervisor</option>
+                                <option value="">Product Manager</option>
+                                <option value="">Read Only</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-field">
+                    <div class="form-head">
+                        <p>First Name: <span>*</span></p>
+                    </div>
+                    <div class="form-input">
+                        <input type="text" placeholder="AutoPopulate...">
+                    </div>
+                </div>
+
+                <div class="form-field">
+                    <div class="form-head">
+                        <p>Last Name: <span>*</span></p>
+                    </div>
+                    <div class="form-input">
+                        <input type="text" placeholder="AutoPopulate...">
+                    </div>
+                </div>
+
+
+                <div class="form-field">
+                    <div class="form-head">
+                        <p>Employee ID: <span>*</span></p>
+                    </div>
+                    <div class="form-input">
+                        <input type="text" placeholder="AutoPopulate...">
+                    </div>
+                </div>
+
+
+                <div class="form-field">
+                    <div class="form-head">
+                        <p>Mail ID: <span>*</span></p>
+                    </div>
+                    <div class="form-input">
+                        <input type="text" placeholder="AutoPopulate/Input(Rblbank.com validation required)...">
+                    </div>
+                </div>
+
+                <div class="form-field">
+                    <div class="form-head">
+                        <p>Approval Level 1 <span>*</span></p>
+                    </div>
+                    <div class="form-input">
+                        <select id="secondRequestType" onchange="redirectToAdmin()">
+                            <option value=" Select">Select</option>
+                            <option value="Admin">Niki Ma'am</option>
+                            <option value="userChecker">Shraddha Sawant</option>
+                        </select>
+                    </div>
+                </div>
+
+
+            </div>
+
+            <div class="form-bx-2">
+                <div class="form-bx-9">
+                    <div class="form-field">
+                        <div class="form-head">
+                            <p>Username: <span>*</span></p>
+                        </div>
+                        <div class="form-input">
+                            <input type="text" placeholder="Input...">
+                        </div>
+                    </div>
+
+                    <div class="form-field">
+                        <div class="form-head">
+                            <p>Nick Name: <span>*</span></p>
+                        </div>
+                        <div class="form-input">
+                            <input type="text" placeholder="Input..">
+                        </div>
+                    </div>
+
+                    <div class="form-field">
+                        <div class="form-head">
+                            <p>Mobile No: <span>*</span></p>
+                        </div>
+                        <div class="form-input">
+                            <input type="text" placeholder="AutoPopulate...">
+                        </div>
+                    </div>
+
+                    <div class="form-field">
+                        <div class="form-head">
+                            <p>Reporting Manager: <span>*</span></p>
+                        </div>
+                        <div class="form-input">
+                            <input type="text" placeholder="User Input /Name OR email id(Rblbank.com validation required) ...">
+                        </div>
+                    </div>
+
+                    <div class="form-field">
+                        <div class="form-head">
+                            <p>Public Group: <span>*</span></p>
+                        </div>
+                        <div class="form-input">
+                            <input type="text" placeholder="AutoPopulate...">
+                        </div>
+                    </div>
+
+
+                    <div class="form-field">
+                        <div class="form-head">
+                            <p>Approval Level 2 <span>*</span></p>
+                        </div>
+                        <div class="form-input">
+                            <select id="secondRequestType" onchange="redirectToAdmin()">
+                                <option value=" Select">Select</option>
+                                <option value="Admin">Approving Authority 2</option>
+                            </select>
+                        </div>
+                    </div>
+    
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Module bx-2: Additional Data Required For Aadhar Vault -->
+    <div class="bx-2" id="additionalDataField" style="display: none;">
+        <div class="head">
+            <p>Additional Data Required For SFDC</p> <!-- Header for bx-2 -->
+        </div>
+
+        <div class="form-grp-bx">
+            <div class="form-bx-1">
+
+
+
+                <div class="form-field">
+                    <div class="form-head">
+                        <p>Type Of Modification: <span>*</span></p>
+                    </div>
+                    <div class="form-input">
+                        <select id="secondRequestType" onchange="redirectToAdmin()">
+                            <option value=" Select">Select</option>
+                            <option value="Admin">Mobile</option>
+                            <option value="userChecker">Role</option>
+                            <option value="userMaker">Reporting Manager</option>
+                            <option value="userMaker">Password Reset</option>
+                        </select>
+                    </div>
+                </div>
+
+
+
+                <!-- Form Field 1 -->
+                <div class="form-field">
+                    <div class="form-head">
+                        <p>Role: <span>*</span></p>
+                    </div>
+                    <div class="form-input">
+                        <select id="secondRequestType" ">
+                    <option value=" Select">Select</option>
+                            <option value="Admin">NSM</option>
+                            <option value="userChecker">RSM</option>
+                            <option value="userMaker">Area Head</option>
+                            <option value="userMaker">ASM</option>
+                            <option value="userMaker">Curing/option>
+                            <option value="userMaker">Product Manager</option>
+                            <option value="userMaker">Admin User</option>
+                            <option value="userMaker">APSI handling team</option>
+                            <option value="userMaker">UAM team</option>
+                            <option value="userMaker">Audit User(Internal)</option>
+                        </select>
+                    </div>
+                </div>
+
+
+                <div class="form-bx-5">
+                    <div class="form-field">
+                        <div class="form-head">
+                            <p>Profile: <span>*</span></p>
+                        </div>
+                        <div class="form-input">
+                            <select>
+                                <option value="Select">Select</option>
+                                <option value="">BFL Ops User</option>
+                                <option value="">BFL Underwriter Supervisor</option>
+                                <option value="">Operations External</option>
+                                <option value="">Validator External</option>
+                                <option value="">RISK</option>
+                                <option value="">FCU Profile</option>
+                                <option value="">Credit Underwriter Supervisor</option>
+                                <option value="">Credit Underwriter Agent</option>
+                                <option value="">DST</option>
+                                <option value="">Branch</option>
+                                <option value="">Curing</option>
+                                <option value="">Curing Maker</option>
+                                <option value="">Curing Checker</option>
+                                <option value="">Curing Supervisor</option>
+                                <option value="">Product Manager</option>
+                                <option value="">Read Only</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-field">
+                    <div class="form-head">
+                        <p>Approval Level 1 <span>*</span></p>
+                    </div>
+                    <div class="form-input">
+                        <select id="secondRequestType" onchange="redirectToAdmin()">
+                            <option value=" Select">Select</option>
+                            <option value="Admin">Approving Authority 1</option>
+                        </select>
+                    </div>
+                </div>
+
+                
+
+                <!-- <div class="form-bx-9">
+                    <div class="field">
+                        <div class="form-head">
+                            <p>Last name: <span>*</span></p>
+                        </div>
+                        <div class="form-input">
+                            <input type="text" placeholder="Autopopulate...">
+                        </div>
+                    </div>
+                </div> -->
+            </div>
+
+
+
+            <div class="form-bx-2">
+                <!-- Form Field 5 -->
+                <div class="field">
+                    <div class="form-head">
+                        <p>Reporting Manager: <span>*</span></p>
+                    </div>
+                    <div class="form-input">
+                        <input type="text" placeholder="User Input /Name OR email id(Rblbank.com validation required)...">
+                    </div>
+                </div>
+
+                <!-- Form Field 6 -->
+                <div class="form-field">
+                    <div class="form-head">
+                        <p>Public Group: <span>*</span></p> <!-- Label for text input -->
+                    </div>
+                    <div class="form-input">
+                        <input type="text" placeholder="AutoPopulate" disabled />
+                    </div>
+                </div>
+
+                <div class="form-bx-9">
+                    <div class="field">
+                        <div class="form-head">
+                            <p>Mobile No: <span>*</span></p>
+                        </div>
+                        <div class="form-input">
+                            <input type="text" placeholder="Input(basic validation required)...">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-field">
+                    <div class="form-head">
+                        <p>Approval Level 2 <span>*</span></p>
+                    </div>
+                    <div class="form-input">
+                        <select id="secondRequestType" onchange="redirectToAdmin()">
+                            <option value=" Select">Select</option>
+                            <option value="Admin">Approving Authority 2</option>
+                        </select>
+                    </div>
+                </div>
+
+
+
+
+                <div class="form-bx-9">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="bx-2" id="additionalDataDeletion" style="display: none;">
+        <div class="head">
+            <p>Additional Data Required For SFDC</p>
+        </div>
+
+        <div class="form-grp-bx">
+            <div class="form-bx-1">
+
+                <div class="form-field">
+                    <div class="form-head">
+                        <p>Type of Request: <span>*</span></p>
+                    </div>
+                    <div class="form-input">
+                        <select id="secondRequestType" onchange="redirectToAdmin()">
+                            <option value=" Select">Select</option>
+                            <option value="Admin">User Deletion</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-bx-5">
+                    <div class="form-field">
+                        <div class="form-head">
+                            <p>Approval Level 1: <span>*</span></p>
+                        </div>
+                        <div class="form-input">
+                            <select>
+                                <option value="Select">Select</option>
+                                <option value="">Approving Authority 1</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-bx-2">
+                <div class="form-bx-9">
+                    <div class="form-field">
+                        <div class="form-head">
+                            <p>Employee Id: <span>*</span></p>
+                        </div>
+                        <div class="form-input">
+                            <input type="text" placeholder="Input...">
+                        </div>
+                    </div>
+
+                    <div class="form-field">
+                        <div class="form-head">
+                            <p>Approval Level 2: <span>*</span></p>
+                        </div>
+                        <div class="form-input">
+                            <select id="secondRequestType" onchange="redirectToAdmin()">
+                                <option value=" Select">Select</option>
+                                <option value="Admin">Approving Authority</option>
+                               
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="bx-2" id="additionalDataReset" style="display: none;">
+        <div class="head">
+            <p>Additional Data Required For SFDC</p>
+        </div>
+ 
+        <div class="form-grp-bx">
+            <div class="form-bx-1">
+ 
+                <div class="form-field">
+                    <div class="form-head">
+                        <p>Type of Request: <span>*</span></p>
+                    </div>
+                    <div class="form-input">
+                        <select id="secondRequestType" onchange="redirectToAdmin()">
+                            <option value=" Select">Select</option>
+                            <option value="Admin">User Password Reset</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-bx-5">
+                    <div class="form-field">
+                        <div class="form-head">
+                            <p>Approval Level 1: <span>*</span></p>
+                        </div>
+                        <div class="form-input">
+                            <select>
+                                <option value="Select">Select</option>
+                                <option value="">Approving Authority 1</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+ 
+            <div class="form-bx-2">
+                <div class="form-bx-9">
+                    <div class="form-field">
+                        <div class="form-head">
+                            <p>Employee Id: <span>*</span></p>
+                        </div>
+                        <div class="form-input">
+                            <input type="text" placeholder="Input...">
+                        </div>
+                    </div>
+ 
+                    <div class="form-field">
+                        <div class="form-head">
+                            <p>Approval Level 2: <span>*</span></p>
+                        </div>
+                        <div class="form-input">
+                            <select id="secondRequestType" onchange="redirectToAdmin()">
+                                <option value=" Select">Select</option>
+                                <option value="Admin">Approving Authority 2</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--Salesfor Enable-->
+
+    <div class="bx-2" id="additionalDataEnable" style="display: none;">
+        <div class="head">
+            <p>Additional Data Required For SFDC</p>
+        </div>
+    
+        <div class="form-grp-bx">
+            <div class="form-bx-1">
+    
+                <div class="form-field">
+                    <div class="form-head">
+                        <p>Type of Request: <span>*</span></p>
+                    </div>
+                    <div class="form-input">
+                        <select id="secondRequestType" onchange="redirectToAdmin()">
+                            <option value=" Select">Select</option>
+                            <option value="Admin">User Enable</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-bx-5">
+                    <div class="form-field">
+                        <div class="form-head">
+                            <p>Approval Level 1: <span>*</span></p>
+                        </div>
+                        <div class="form-input">
+                            <select>
+                                <option value="Select">Select</option>
+                                <option value="">Approving Authority 1</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    
+            <div class="form-bx-2">
+                <div class="form-bx-9">
+                    <div class="form-field">
+                        <div class="form-head">
+                            <p>Employee Id: <span>*</span></p>
+                        </div>
+                        <div class="form-input">
+                            <input type="text" placeholder="Input...">
+                        </div>
+                    </div>
+    
+                    <div class="form-field">
+                        <div class="form-head">
+                            <p>Approval Level 2: <span>*</span></p>
+                        </div>
+                        <div class="form-input">
+                            <select id="secondRequestType" onchange="redirectToAdmin()">
+                                <option value=" Select">Select</option>
+                                <option value="Admin">Approving Authority 2</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--Salesforce Enable-->
+
+    <div class="bx-2" id="additionalDataEnable_Salesforce" style="display: none;">
+        <div class="head">
+            <p>Additional Data Required For SFDC</p>
+        </div>
+    
+        <div class="form-grp-bx">
+            <div class="form-bx-1">
+    
+                <div class="form-field">
+                    <div class="form-head">
+                        <p>Type of Request: <span>*</span></p>
+                    </div>
+                    <div class="form-input">
+                        <select id="secondRequestType" onchange="redirectToAdmin()">
+                            <option value=" Select">Select</option>
+                            <option value="Admin">User Enable</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-bx-5">
+                    <div class="form-field">
+                        <div class="form-head">
+                            <p>Approval Level 1: <span>*</span></p>
+                        </div>
+                        <div class="form-input">
+                            <select>
+                                <option value="Select">Select</option>
+                                <option value="">Approving Authority 1</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    
+            <div class="form-bx-2">
+                <div class="form-bx-9">
+                    <div class="form-field">
+                        <div class="form-head">
+                            <p>Employee Id: <span>*</span></p>
+                        </div>
+                        <div class="form-input">
+                            <input type="text" placeholder="Input...">
+                        </div>
+                    </div>
+    
+                    <div class="form-field">
+                        <div class="form-head">
+                            <p>Approval Level 2: <span>*</span></p>
+                        </div>
+                        <div class="form-input">
+                            <select id="secondRequestType" onchange="redirectToAdmin()">
+                                <option value=" Select">Select</option>
+                                <option value="Admin">Approving Authority 2</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Buttons for Reset and Submit -->
+    <div class="btn-grp-bx">
+        <div class="btn btn-1">
+            <button>Reset</button>
+        </div>
+        <div class="btn btn-2">
+            <button>Submit</button>
+        </div>
+    </div>
+    
+</body>
+
+</html>

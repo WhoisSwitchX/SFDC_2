@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="Home.css">
+    <title>SFDC - Home</title>
+    
+    <script>
+
+
+function redirectToPartner(){
+
+}
+
+        // Function to redirect to Admin page when "Admin" is selected
+        function redirectToAdmin() {
+            var selectBox = document.getElementById("secondRequestType");
+            var selectedValue = selectBox.options[selectBox.selectedIndex].value;
+            if (selectedValue === "BFL-Partner") {
+                window.open("Partner.html", "_blank");
+                selectBox.selectedIndex = 0; // Reset dropdown to "Select" after opening new tab
+            }
+            if (selectedValue === "OPS-Partner") {
+                window.open("Partner.html", "_blank");
+                selectBox.selectedIndex = 0; // Reset dropdown to "Select" after opening new tab
+            }
+            if (selectedValue === "FCURCU - Partner") {
+                window.open("Partner.html", "_blank");
+                selectBox.selectedIndex = 0; // Reset dropdown to "Select" after opening new tab
+            }
+            if (selectedValue === "Sales - Partner") {
+                window.open("Partner.html", "_blank");
+                selectBox.selectedIndex = 0; // Reset dropdown to "Select" after opening new tab
+            }
+            if (selectedValue === "BFL-Partner") {
+                window.open("Partner.html", "_blank");
+                selectBox.selectedIndex = 0; // Reset dropdown to "Select" after opening new tab
+            }
+            if (selectedValue === "Curing - Partner") {
+                window.open("Partner.html", "_blank");
+                selectBox.selectedIndex = 0; // Reset dropdown to "Select" after opening new tab
+            }
+            if (selectedValue === "Others - Partner") {
+                window.open("Partner.html", "_blank");
+                selectBox.selectedIndex = 0; // Reset dropdown to "Select" after opening new tab
+            }
+            else if (selectedValue === "OPS - Salesforce") {
+                window.open("Salesforce.html", "_blank");
+                selectBox.selectedIndex = 0;
+            }
+            else if (selectedValue === "FCURCU - Salesforce") {
+                window.open("Salesforce.html", "_blank");
+                selectBox.selectedIndex = 0;
+            }
+            else if (selectedValue === "Sales - Salesforce") {
+                window.open("Salesforce.html", "_blank");
+                selectBox.selectedIndex = 0;
+            }
+            else if (selectedValue === "Curing - Salesforce") {
+                window.open("Salesforce.html", "_blank");
+                selectBox.selectedIndex = 0;
+            }
+            else if(selectedValue === "Others - Salesforce") {
+                window.open("Salesforce.html", "_blank");
+                selectBox.selectedIndex = 0;
+            }
+            else if(selectedValue === "BFL - Salesforce Platform") {
+                window.open("SalesforcePlatform.html", "_blank");
+                selectBox.selectedIndex = 0;
+            }
+            else if(selectedValue === "Credit - Salesforce Platform") {
+                window.open("SalesforcePlatform.html", "_blank");
+                selectBox.selectedIndex = 0;
+            }
+            else{
+                
+            }
+        }
+        
+    </script>
+</head>
+<body>
+    <div class="bx-1">
+        <div class="head">
+            <p>Default Data</p>
+        </div>
+
+        <div class="form-bx">
+            <!-- First Field: Types of User Request -->
+            <div class="field">
+                <div class="form-head">
+                    <p>Types of User Request: <span>*</span></p>
+                </div>
+                <div class="form-input">
+                    <select id="requestType" onchange="showAdditionalFields();">
+                        <option value="Select">Select</option>
+                        <option value="creation">Creation</option>
+                        <option value="modification">Modification</option>
+                        <option value="creation">Deletion</option>
+                        <option value="modification">Password Reset</option>
+                        <option value="enable">Enable</option>
+                    </select>
+                </div>
+            </div>
+            <!-- ./First Field -->
+
+            <!-- Second Field: Request For -->
+            <div class="field">
+                <div class="form-head">
+                    <p>Request For: <span>*</span></p>
+                </div>
+                <div class="form-input">
+                    <div class="rd-bx">
+                        <div class="rd-1">
+                            <input type="radio" id="myself" name="requestFor" checked>
+                            <label for="myself">Myself</label>
+                        </div>
+                        <div class="rd-2">
+                            <input type="radio" id="onBehalf" name="requestFor">
+                            <label for="onBehalf">On behalf of</label>
+                        </div>
+                    </div>
+                    <div class="emp-bx">
+                        <input type="text" placeholder="Enter Employee Details..." disabled>
+                    </div>
+                </div>
+            </div>
+            <!-- ./Second Field -->
+
+            <!-- Third Field: Application -->
+            <div class="field">
+                <div class="form-head">
+                    <p>Application: <span>*</span></p>
+                </div>
+                <div class="form-input">
+                    <select>
+                        <option value="Select">Select</option>
+                        <option value="sfdc">SFDC</option>
+                        <option value="Aadhar Vault">Aadhar Vault</option>
+                        <option value="CRM Next">CRM Next</option>
+                    </select>   
+                </div>
+            </div>
+            <!-- ./Third Field -->
+
+            <!-- Fourth Field: Module Name -->
+            <div class="field">
+                <div class="form-head">
+                    <p>Module Name: <span>*</span></p>
+                </div>
+                <div class="form-input">
+                    <select id="secondRequestType" onchange="redirectToAdmin()">
+                        <option value="Select">Select</option>
+                        <option value="BFL-Partner">BFL-Partner</option>     
+                        <option value="OPS-Partner">OPS-Partner</option>                       
+                        <option value="FCURCU - Partner">FCURCU - Partner</option>    
+                        <option value="Sales - Partner">Sales - Partner</option>    
+                        <option value="Curing - Partner">Curing - Partner</option>    
+                        <option value="Others - Partner">Others - Partner</option> 
+                        <option value="OPS - Salesforce">OPS - Salesforce</option>  
+                        <option value="FCURCU - Salesforce">FCURCU - Salesforce</option>  
+                        <option value="Sales - Salesforce">Sales - Salesforce</option>  
+                        <option value="Curing - Salesforce">Curing - Salesforce</option>  
+                        <option value="Others - Salesforce">Others - Salesforce</option>   
+                        <option value="BFL - Salesforce Platform">BFL - Salesforce Platform</option>
+                        <option value="Credit - Salesforce Platform">Credit - Salesforce Platform</option>
+                    </select>
+                </div>
+            </div>
+            <!-- ./Fourth Field -->
+
+            <!-- Fifth Field: Business Justification -->
+            <div class="field">
+                <div class="form-head">
+                    <p>Business Justification: <span>*</span></p>
+                </div>
+                <div class="form-input">
+                    <input type="text" placeholder="Enter Business Justification Here...">
+                </div>
+            </div>
+            <!-- ./Fifth Field -->
+        </div>
+    </div>
+
+    <div class="bx-2" id="additionalData" style="display: none;">
+        <div class="head">
+            <p>Additional Data Required For Aadhar Vault</p>
+        </div>
+
+        <div class="form-grp-bx">
+            <div class="form-bx-1">
+                <!-- Additional Field: User Role -->
+                <div class="form-field">
+                    <div class="form-head">
+                        <p>Role: <span>*</span></p>
+                    </div>
+                    <div class="form-input">
+                        <select id="secondRequestType" onchange="redirectToAdmin()">
+                            <option value="Select">Select</option>
+                            <option value="">BFL Ops User</option>
+                            <option value="">BFL Underwriter Agent</option>
+                            <option value="">Maker Agent</option>
+                            <option value="">Validator Agent</option>
+                            <option value="">RCU Supervisor</option>
+                            <option value="">FCU Supervisor</option>
+                            <option value="">Underwriter Supervisor</option>
+                            <option value="">Underwriter Agentr</option>
+                            <option value="">DST Admin</option>
+                            <option value="">Branch</option>
+                            <option value="">Curing</option>
+                            <option value="">Curing</option>
+                            <option value="">Product Manager</option>
+                            <option value="">APSI handling team</option>
+                        </select>
+                    </div>
+                </div>
+                <!-- Additional Field: Email Id -->
+                <div class="form-bx-5">
+                    <div class="form-field">
+                        <div class="form-head">
+                            <p>Profile: <span>*</span></p>
+                        </div>
+                        <div class="form-input">
+                            <select>
+                                <option value="Select">Select</option>
+                                <option value="">BFL Ops User</option>
+                                <option value="">BFL Underwriter Supervisor</option>
+                                <option value="">Operations External</option>
+                                <option value="">Validator External</option>
+                                <option value="">RISK</option>
+                                <option value="">FCU Profile</option>
+                                <option value="">Credit Underwriter Supervisor</option>
+                                <option value="">Credit Underwriter Agent</option>
+                                <option value="">DST</option>
+                                <option value="">Branch</option>
+                                <option value="">Curing</option>
+                                <option value="">Curing Maker</option>
+                                <option value="">Curing Checker</option>
+                                <option value="">Curing Supervisor</option>
+                                <option value="">Product Manager</option>
+                                <option value="">Read Only</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!-- Additional Field: Approval Level 1 -->
+                <div class="form-field">
+                    <div class="form-head">
+                        <p>First Name: <span>*</span></p>
+                    </div>
+                    <div class="form-input">
+                        <input type="text" placeholder="Enter First Name...">
+                    </div>
+                </div>
+
+                <div class="form-field">
+                    <div class="form-head">
+                        <p>Last Name: <span>*</span></p>
+                    </div>
+                    <div class="form-input">
+                        <input type="text" placeholder="Enter Last Name...">
+                    </div>
+                </div>
+
+
+                <div class="form-field">
+                    <div class="form-head">
+                        <p>Employee ID: <span>*</span></p>
+                    </div>
+                    <div class="form-input">
+                        <input type="text" placeholder="Enter Employee ID...">
+                    </div>
+                </div>
+
+
+                <div class="form-field">
+                    <div class="form-head">
+                        <p>Mail ID: <span>*</span></p>
+                    </div>
+                    <div class="form-input">
+                        <input type="text" placeholder="Enter Mail ID...">
+                    </div>
+                </div>
+
+
+
+
+            </div>
+
+            <div class="form-bx-2">
+                
+
+                <!-- Additional Field: Channel & Associated Business Unit -->
+                <div class="form-bx-9">
+
+
+                    <div class="form-field">
+                        <div class="form-head">
+                            <p>Mail ID: <span>*</span></p>
+                        </div>
+                        <div class="form-input">
+                            <input type="text" placeholder="Enter Mail ID...">
+                        </div>
+                    </div>
+
+                    <div class="form-field">
+                        <div class="form-head">
+                            <p>Nick Name: <span>*</span></p>
+                        </div>
+                        <div class="form-input">
+                            <input type="text" placeholder="Enter Nick Name...">
+                        </div>
+                    </div>
+
+
+
+                    <div class="form-field">
+                        <div class="form-head">
+                            <p>Mobile No: <span>*</span></p>
+                        </div>
+                        <div class="form-input">
+                            <input type="text" placeholder="Enter Mobile No...">
+                        </div>
+                    </div>
+
+
+
+                    <div class="form-field">
+                        <div class="form-head">
+                            <p>Reporting Manager: <span>*</span></p>
+                        </div>
+                        <div class="form-input">
+                            <input type="text" placeholder="Enter Reporting Manager Name ...">
+                        </div>
+                    </div>
+
+                   
+
+                    <!-- Additional Field: Approval Level 2 -->
+                    <div class="form-field">
+                        <div class="form-head">
+                            <p>Public Group: <span>*</span></p>
+                        </div>
+                        <div class="form-input">
+                            <input type="text" placeholder="Enter Public Group...">
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+     <!-- Module bx-2: Additional Data Required For Aadhar Vault -->
+  <div class="bx-2" id="additionalDataField" style="display: none;">
+    <div class="head">
+      <p>Additional Data Required For Aadhar Vault</p> <!-- Header for bx-2 -->
+    </div>
+
+    <div class="form-grp-bx">
+      <div class="form-bx-1">
+        <!-- Form Field 1 -->
+        <div class="form-field">
+            <div class="form-head">
+                <p>Role: <span>*</span></p>
+            </div>
+            <div class="form-input">
+                <select id="secondRequestType" ">
+                    <option value="Select">Select</option>
+                    <option value="Admin">BFL Ops User</option>
+                    <option value="userChecker">BFL Underwriter Agent</option>
+                    <option value="userMaker">Maker Agent</option>
+                    <option value="userMaker">Validator Agent</option>
+                    <option value="userMaker">RCU Supervisor</option>
+                    <option value="userMaker">FCU Supervisor</option>
+                    <option value="userMaker">Underwriter Supervisor</option>
+                    <option value="userMaker">Underwriter Agentr</option>
+                    <option value="userMaker">DST Admin</option>
+                    <option value="userMaker">Branch</option>
+                    <option value="userMaker">Curing</option>
+                    <option value="userMaker">Curing</option>
+                    <option value="userMaker">Product Manager</option>
+                    <option value="userMaker">APSI handling team</option>
+                </select>
+            </div>
+        </div>
+        <!-- ./Form Field 1 -->
+
+        <!-- Form Field 2 -->
+        <div class="form-bx-5">
+            <div class="form-field">
+                <div class="form-head">
+                    <p>Profile: <span>*</span></p>
+                </div>
+                <div class="form-input">
+                    <select>
+                        <option value="Select">Select</option>
+                        <option value="">BFL Ops User</option>
+                        <option value="">BFL Underwriter Supervisor</option>
+                        <option value="">Operations External</option>
+                        <option value="">Validator External</option>
+                        <option value="">RISK</option>
+                        <option value="">FCU Profile</option>
+                        <option value="">Credit Underwriter Supervisor</option>
+                        <option value="">Credit Underwriter Agent</option>
+                        <option value="">DST</option>
+                        <option value="">Branch</option>
+                        <option value="">Curing</option>
+                        <option value="">Curing Maker</option>
+                        <option value="">Curing Checker</option>
+                        <option value="">Curing Supervisor</option>
+                        <option value="">Product Manager</option>
+                        <option value="">Read Only</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <!-- ./Form Field 2 -->
+
+        <!-- Form Field 3 -->
+<div class="form-bx-9">
+    <div class="field">
+        <div class="form-head">
+            <p>Mobile No: <span>*</span></p>
+        </div>
+        <div class="form-input">
+            <input type="text" placeholder="Enter Mobile No...">
+        </div>
+    </div>
+        </div>
+        <!-- ./Form Field 3 -->
+
+        <!-- ./Form Field 4 -->
+      </div>
+
+
+
+
+
+      <div class="form-bx-2">
+        <!-- Form Field 5 -->
+        <div class="field">
+            <div class="form-head">
+                <p>Reporting Manager: <span>*</span></p>
+            </div>
+            <div class="form-input">
+                <input type="text" placeholder="Enter Reporting Manager Name...">
+            </div>
+        </div>
+
+        <!-- Form Field 6 -->
+        <div class="form-field">
+            <div class="form-head">
+              <p>Public Group: <span>*</span></p> <!-- Label for text input -->
+            </div>
+            <div class="form-input">
+              <input type="text" placeholder="Existing Public Group" disabled />
+            </div>
+          </div>
+        <!-- ./Form Field 6 -->
+
+        <div class="form-bx-9">
+         
+        </div>
+        <!-- ./Form Field 8 (Commented Out) -->
+      </div>
+    </div>
+  </div>
+
+    <!-- Buttons for Reset and Submit -->
+    <div class="btn-grp-bx">
+        <div class="btn btn-1">
+            <button>Reset</button>
+        </div>
+        <div class="btn btn-2">
+            <button>Submit</button>
+        </div>
+    </div>
+</body>
+</html>

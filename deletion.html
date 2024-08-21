@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="Home.css">
+    <title>SFDC - Deletion</title>
+
+    <script>
+
+
+
+window.onload = function() {
+           // Parse the query parameter from the URL
+           const params = new URLSearchParams(window.location.search);
+           const requestType = params.get('request');
+           // Display the appropriate section based on the request type
+           if (requestType === "Creation") {
+               document.getElementById("creationSection").style.display = "block";
+               document.getElementById("modificationSection").style.display = "none";
+           } else if (requestType === "Modification") {
+               document.getElementById("creationSection").style.display = "none";
+               document.getElementById("modificationSection").style.display = "block";
+           }
+       };
+
+        document.getElementById("requestType").addEventListener("change", showAdditionalFields);
+        function showAdditionalFields() {
+            var selectBox = document.getElementById("requestType");
+            var selectedValue = selectBox.options[selectBox.selectedIndex].value;
+            // Hide both fields initially
+            document.getElementById("additionalData").style.display = "none";
+            document.getElementById("additionalDataField").style.display = "none";
+            if (selectedValue === "creation") {
+                document.getElementById("additionalData").style.display = "block";
+            } else if (selectedValue === "modification") {
+                document.getElementById("additionalDataField").style.display = "block";
+            }
+        }
+
+        // Function to redirect to Admin page when "Admin" is selected
+        function redirectToAdmin() {
+            var selectBox = document.getElementById("secondRequestType");
+            var selectedValue = selectBox.options[selectBox.selectedIndex].value;
+            
+             if (selectedValue === "OPS - Salesforce") {
+                window.open("Salesforce.html", "_blank");
+                selectBox.selectedIndex = 0;
+            }
+            else if (selectedValue === "FCURCU - Salesforce") {
+                window.open("Salesforce.html", "_blank");
+                selectBox.selectedIndex = 0;
+            }
+            else if (selectedValue === "Sales - Salesforce") {
+                window.open("Salesforce.html", "_blank");
+                selectBox.selectedIndex = 0;
+            }
+            else if (selectedValue === "Curing - Salesforce") {
+                window.open("Salesforce.html", "_blank");
+                selectBox.selectedIndex = 0;
+            }
+            else if (selectedValue === "Others - Salesforce") {
+                window.open("Salesforce.html", "_blank");
+                selectBox.selectedIndex = 0;
+            }
+            else if (selectedValue === "BFL - Salesforce Platform") {
+                window.open("SalesforcePlatform.html", "_blank");
+                selectBox.selectedIndex = 0;
+            }
+            else if (selectedValue === "Credit - Salesforce Platform") {
+                window.open("SalesforcePlatform.html", "_blank");
+                selectBox.selectedIndex = 0;
+            }
+            else {
+            }
+        }
+
+    </script>
+</head>
+
+<body>
+ 
+
+    <div class="bx-2" id="additionalData">
+        <div class="head">
+            <p>Additional Data Required For SFDC</p>
+        </div>
+ 
+        <div class="form-grp-bx">
+            <div class="form-bx-1">
+ 
+                <div class="form-field">
+                    <div class="form-head">
+                        <p>Type of Request: <span>*</span></p>
+                    </div>
+                    <div class="form-input">
+                        <select id="secondRequestType" onchange="redirectToAdmin()">
+                            <option value=" Select">Select</option>
+                            <option value="Admin">User Password Reset</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-bx-5">
+                    <div class="form-field">
+                        <div class="form-head">
+                            <p>Approval Level 1: <span>*</span></p>
+                        </div>
+                        <div class="form-input">
+                            <select>
+                                <option value="Select">Select</option>
+                                <option value="">Approving Authority 1</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+ 
+            </div>
+ 
+            <div class="form-bx-2">
+                <div class="form-bx-9">
+                    <div class="form-field">
+                        <div class="form-head">
+                            <p>Employee Id: <span>*</span></p>
+                        </div>
+                        <div class="form-input">
+                            <input type="text" placeholder="Input...">
+                        </div>
+                    </div>
+ 
+                    <div class="form-field">
+                        <div class="form-head">
+                            <p>Approval Level 2: <span>*</span></p>
+                        </div>
+                        <div class="form-input">
+                            <select id="secondRequestType" onchange="redirectToAdmin()">
+                                <option value=" Select">Select</option>
+                                <option value="Admin">Approving Authority 2</option>
+                               
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Module bx-2: Additional Data Required For Aadhar Vault -->
+   
+    <!-- Buttons for Reset and Submit -->
+    <div class="btn-grp-bx">
+        <div class="btn btn-1">
+            <button>Reset</button>
+        </div>
+        <div class="btn btn-2">
+            <button>Submit</button>
+        </div>
+    </div>
+</body>
+
+</html>
